@@ -12,14 +12,27 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddTransient<ICatalogPeople, FakePeopleCatalog>();
+builder.Services.AddTransient<ICatalogPeople, EfPeopleCatalog>();
 
 builder.Services.AddDbContext<GiftingDataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("gifts"));
 });
 
+
+//Example of CORS
+builder.Services.AddCors(builder =>
+{
+    builder.AddDefaultPolicy(pol =>
+    {   // "Promiscuous Mode"
+        pol.AllowAnyHeader();
+        pol.AllowAnyOrigin();
+        pol.AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
+app.UseCors();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

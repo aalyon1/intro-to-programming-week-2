@@ -1,10 +1,12 @@
-﻿namespace GiftingAPI.Domain
+﻿using GiftingAPI.Models;
+
+namespace GiftingAPI.Domain
 {
-    public class ICatalogPeople
+    public interface ICatalogPeople
     {
-        internal Task<PersonResponse> GetPeopleAsync()
-        {
-            throw new NotImplementedException();
-        }
+        public Task<PersonItemResponse> AddPersonAsync(PersonCreateRequest request);
+
+        public Task<PersonResponse> GetPeopleAsync();
+        public Task<PersonItemResponse?> GetPersonByIdAsync(int id);
     }
 }
