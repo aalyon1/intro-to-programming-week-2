@@ -12,6 +12,13 @@ import { PeopleListComponent } from './features/gift-giving/components/people-li
 import {HttpClientModule} from '@angular/common/http';
 import { PersonDataService } from './services/people-data.service';
 import { PeopleEntryComponent } from './features/gift-giving/components/people-entry/people-entry.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './state';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { PeopleEffects } from './state/effects/people-effects';
+import { EffectsModule } from '@ngrx/effects';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,12 +27,17 @@ import { PeopleEntryComponent } from './features/gift-giving/components/people-e
     DashboardComponent,
     GiftGivingComponent,
     AboutUsComponent, 
-    PeopleListComponent, PeopleEntryComponent
+    PeopleListComponent,
+    PeopleEntryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([PeopleEffects])
   ],
   providers: [PersonDataService],
   bootstrap: [AppComponent]

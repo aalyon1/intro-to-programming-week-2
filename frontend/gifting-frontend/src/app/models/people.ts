@@ -1,5 +1,10 @@
 export type PersonListItem = {
     id: string;
-    firstname: string;
-    lastname: string;
+    firstName: string;
+    lastName: string;
+}
+
+export type PersonCreate = {
+    firstName: string;
+    lastName: string;
 }

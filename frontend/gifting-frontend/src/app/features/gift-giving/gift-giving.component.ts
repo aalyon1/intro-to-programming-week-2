@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { PeopleCommands } from 'src/app/state/actions/people-actions';
 
 @Component({
   selector: 'app-gift-giving',
@@ -7,4 +9,7 @@ import { Component } from '@angular/core';
 })
 export class GiftGivingComponent {
 
+  constructor(private readonly store:Store) {
+    store.dispatch(PeopleCommands.load());
+  }
 }
