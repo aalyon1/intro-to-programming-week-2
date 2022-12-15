@@ -10,6 +10,7 @@ public class PeopleController : ControllerBase
 {
 
     private readonly ICatalogPeople _personCatalog;
+    private readonly ILogger<PeopleController> _logger;
 
     public PeopleController(ICatalogPeople personCatalog)
     {
@@ -44,9 +45,12 @@ public class PeopleController : ControllerBase
 
     // GET /people
     [HttpGet("/people")]
-    public async Task<ActionResult<PersonResponse>> GetAllPeople()
+    public async Task<ActionResult<PersonResponse>> GetAllPeople(CancellationToken token)
     {
-        PersonResponse response = await _personCatalog.GetPeopleAsync();
+        _logger.LogInformation("Get a request to get somse people... ");
+        await Task.Delay(3000);
+        PersonResponse response = await _personCatalog.GetPeopleAsync(token);
+        _logger.LogInformation($"Got some people from the DB {response.Data.Count} persons ");
         return Ok(response);
     }
 }

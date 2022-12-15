@@ -6,7 +6,7 @@ namespace GiftingAPI.Domain
     {
         public Task<PersonItemResponse> AddPersonAsync(PersonCreateRequest request);
 
-        public Task<PersonResponse> GetPeopleAsync();
+        public Task<PersonResponse> GetPeopleAsync(CancellationToken token);
         public Task<PersonItemResponse?> GetPersonByIdAsync(int id);
     }
 }

@@ -30,7 +30,7 @@ public class EfPeopleCatalog : ICatalogPeople
         return new PersonItemResponse(personToAdd.Id.ToString(), personToAdd.FirstName, personToAdd.LastName);
     }
 
-    public async Task<PersonResponse> GetPeopleAsync()
+    public async Task<PersonResponse> GetPeopleAsync(CancellationToken token)
     {
         // Select Id, FirstName, LastName from People where Unfriended = 0
         var data = await GetPeopleThatAreStillFriends().
