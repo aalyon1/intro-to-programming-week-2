@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="DeveloperLookupUtils.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="DeveloperLookupUtils.cs" />
+  </ItemGroup>
+
 </Project>
