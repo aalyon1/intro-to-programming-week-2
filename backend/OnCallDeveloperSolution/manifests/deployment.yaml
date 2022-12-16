@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oncall-developer-api
+  namespace: gifting
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oncall-developer-api
+  template:
+    metadata:
+      labels:
+        app: oncall-developer-api
+    spec:
+      containers:
+      - name: oncall-developer-api
+        image: jeffrygonzalez/oncall-developer-api-dec-2022:v0.1
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "500m"
+          limits:
+            memory: "256Mi"
+            cpu: "1500m"
+        ports:
+        - containerPort: 80
