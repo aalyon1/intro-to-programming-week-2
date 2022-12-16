@@ -14,4 +14,5 @@ app.MapGet("/developer", () => {
 });
 app.Run();
 
+
 public record OnCallDeveloperResponse(string Name, string Email);

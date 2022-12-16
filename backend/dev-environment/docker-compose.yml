@@ -9,5 +9,9 @@ services:
       - 1433:1433
     volumes:
       - db-data:/var/opt/mssql
+  dev:
+    image: aalyon/oncall-developer-api-dec-2022:latest
+    ports: 
+      - 1338:80
 volumes:
   db-data:
